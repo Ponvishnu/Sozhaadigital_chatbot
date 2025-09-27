@@ -33,7 +33,7 @@ COMPANY_URLS = [
     "https://sozhaa.digital/",
     "https://sozhaa.digital/about",
     "https://sozhaa.digital/services",
-    "https://sozhaa.digital/news-events
+    "https://sozhaa.digital/news-events",
     "https://sozhaa.digital/contact",
 ]
 
@@ -312,3 +312,4 @@ async def chat_endpoint(payload: ChatPayload, background_tasks: BackgroundTasks)
 
     background_tasks.add_task(save_and_notify)
     return {"reply": assistant_text}
+

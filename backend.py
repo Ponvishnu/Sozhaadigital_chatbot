@@ -87,7 +87,7 @@ def build_system_prompt(snippets):
     return (
         "You are Sozhaa Digital AI Assistant. Use only the company's information provided below "
         "(sozhaa.digital). Answer only about the company, services, pages and contact information. "
-        "If asked outside scope, reply politely that you only provide Sozhaa Tech info. "
+        "If asked outside scope, reply politely that you only provide Sozhaa Digital info. "
         "Keep replies clear, detailed, and professional.\n\n"
         "Company context:\n" + context_text + "\n\n"
     )
@@ -305,11 +305,12 @@ async def chat_endpoint(payload: ChatPayload, background_tasks: BackgroundTasks)
         send_email_with_attachment(COMPANY_EMAIL, f"Chat update — {payload.user_details.get('name')}", html, TRANSCRIPT_EXCEL)
 
         if payload.user_details.get("email"):
-            send_email_with_attachment(payload.user_details["email"], "Sozhaa Tech — Your Chat Transcript", html, TRANSCRIPT_EXCEL)
+            send_email_with_attachment(payload.user_details["email"], "Sozhaa Digital — Your Chat Transcript", html, TRANSCRIPT_EXCEL)
 
         # WhatsApp to you
         send_whatsapp_text(COMPANY_WA_NUMBER, "📩 Chat updated. Check email for transcript & Excel file.")
 
     background_tasks.add_task(save_and_notify)
     return {"reply": assistant_text}
+
 
